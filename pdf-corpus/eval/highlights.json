@@ -1,0 +1,125 @@
+{
+  "description": "20-highlight eval set for the OCT / grape-attenuation corpus. Each highlight is a passage a researcher might select in one of their own papers. `expects` lists corpus facts a context-grounded explanation should surface that a generic one cannot (cross-paper connections, specific figures/equations, measured values). The judge scores whether the grounded explanation beats the generic one on grounding and cross-paper attribution.",
+  "highlights": [
+    {
+      "id": 1,
+      "paper": "grape_oct_2021",
+      "text": "The OCT signal decays with depth according to the attenuation coefficient of the berry tissue.",
+      "expects": ["Beer-Lambert single-scattering model (Eq. 3)", "definition of the total attenuation coefficient", "link to the depth-resolved attenuation figure"]
+    },
+    {
+      "id": 2,
+      "paper": "grape_oct_2021",
+      "text": "Attenuation decreased with sugar accumulation across all Chardonnay samples.",
+      "expects": ["Fig. 2 depth-resolved attenuation across ripening stages", "quantitative attenuation values at 1300 nm", "ripeness/Brix relationship"]
+    },
+    {
+      "id": 3,
+      "paper": "grape_oct_2021",
+      "text": "Scattering dominates absorption at 1300 nm in ripe fruit.",
+      "expects": ["separation of mu_a and mu_s", "why 1300 nm was chosen", "cross-reference to skin/tissue optics where absorption dominates"]
+    },
+    {
+      "id": 4,
+      "paper": "grape_oct_2021",
+      "text": "We fit the attenuation coefficient by least-squares regression of log-intensity against depth.",
+      "expects": ["single-scattering assumption behind the linear fit", "depth range used for the fit", "sensitivity of the fit to the multiple-scattering tail"]
+    },
+    {
+      "id": 5,
+      "paper": "grape_oct_2021",
+      "text": "The measured attenuation of ripe berries was approximately 2.4 mm-1 at 1300 nm.",
+      "expects": ["comparison against unripe berries", "consistency with other soft-fruit values", "measurement uncertainty"]
+    },
+    {
+      "id": 6,
+      "paper": "oct_review",
+      "text": "Optical coherence tomography resolves depth via low-coherence interferometry.",
+      "expects": ["axial resolution set by source bandwidth", "why OCT suits berry tissue", "link to how depth-resolved attenuation is extracted in the grape paper"]
+    },
+    {
+      "id": 7,
+      "paper": "oct_review",
+      "text": "Axial resolution is inversely proportional to the source bandwidth.",
+      "expects": ["specific center wavelength/bandwidth used in the grape study", "tradeoff with penetration depth", "practical resolution achieved on fruit"]
+    },
+    {
+      "id": 8,
+      "paper": "oct_review",
+      "text": "Multiple scattering degrades the exponential-decay model at large depths.",
+      "expects": ["how the grape paper bounds the fit depth to stay in the single-scattering regime", "resulting bias in attenuation estimates", "mitigation strategies"]
+    },
+    {
+      "id": 9,
+      "paper": "skin_optics_2019",
+      "text": "Melanin absorption changes the attenuation profile of human skin.",
+      "expects": ["contrast with fruit where scattering dominates", "wavelength dependence of melanin absorption", "why the same Beer-Lambert fit needs an absorption term for skin"]
+    },
+    {
+      "id": 10,
+      "paper": "skin_optics_2019",
+      "text": "Absorption dominates the near-infrared attenuation of pigmented tissue.",
+      "expects": ["direct contrast with the grape result that scattering dominates", "shared attenuation-coefficient formalism", "wavelength window comparison"]
+    },
+    {
+      "id": 11,
+      "paper": "grape_oct_2021",
+      "text": "The total attenuation coefficient is the sum of absorption and scattering coefficients.",
+      "expects": ["Eq. defining mu_t = mu_a + mu_s", "which term dominates in grapes vs skin", "how the two are separated experimentally"]
+    },
+    {
+      "id": 12,
+      "paper": "grape_oct_2021",
+      "text": "Depth-resolved attenuation distinguishes ripening stages non-destructively.",
+      "expects": ["Fig. 2 stage separation", "practical advantage over destructive Brix sampling", "measurement repeatability"]
+    },
+    {
+      "id": 13,
+      "paper": "oct_review",
+      "text": "The detected signal intensity is proportional to backscattered light from each depth.",
+      "expects": ["connection to the exponential attenuation model", "role of the confocal/roll-off function", "how backscatter is normalized before fitting"]
+    },
+    {
+      "id": 14,
+      "paper": "grape_oct_2021",
+      "text": "Berry skin introduces a strong surface reflection that must be excluded from the fit.",
+      "expects": ["depth offset applied before fitting", "effect on estimated attenuation if included", "relation to the surface-reflection handling in the OCT review"]
+    },
+    {
+      "id": 15,
+      "paper": "skin_optics_2019",
+      "text": "The attenuation coefficient is extracted from the slope of the log-intensity depth profile.",
+      "expects": ["identical extraction method to the grape study", "why the slope encodes mu_t", "differences in valid depth range between skin and fruit"]
+    },
+    {
+      "id": 16,
+      "paper": "grape_oct_2021",
+      "text": "Sugar accumulation is associated with structural changes in the berry mesocarp.",
+      "expects": ["mechanistic link between structure and scattering", "how that lowers measured attenuation", "supporting figure/measurement"]
+    },
+    {
+      "id": 17,
+      "paper": "oct_review",
+      "text": "Penetration depth in turbid media is limited by total attenuation.",
+      "expects": ["measured penetration depth in berries", "why 1300 nm balances resolution and depth", "contrast with more strongly absorbing tissue"]
+    },
+    {
+      "id": 18,
+      "paper": "grape_oct_2021",
+      "text": "Attenuation values were consistent across the three ripening stages within measurement uncertainty at the deepest layers.",
+      "expects": ["where the single-scattering model breaks down", "how deep-layer noise limits the fit", "Fig. 2 error bars"]
+    },
+    {
+      "id": 19,
+      "paper": "skin_optics_2019",
+      "text": "Wavelength selection trades off absorption contrast against scattering background.",
+      "expects": ["why the grape study picked 1300 nm to suppress absorption", "opposite priority for pigment imaging in skin", "shared attenuation formalism"]
+    },
+    {
+      "id": 20,
+      "paper": "grape_oct_2021",
+      "text": "Non-destructive optical assessment could enable in-field ripeness monitoring.",
+      "expects": ["what measured attenuation values would be needed as a threshold", "instrument requirements from the OCT review", "limitations from multiple scattering"]
+    }
+  ]
+}
