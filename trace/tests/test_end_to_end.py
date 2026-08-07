@@ -5,11 +5,11 @@ in the PyMuPDF layer (font flags, bbox handling, dehyphenation) is caught here
 even though the unit tests use synthetic RawBlocks.
 """
 
-from pdfcorpus.chunker import chunk_document
-from pdfcorpus.classify import classify_document
-from pdfcorpus.extract import extract_blocks
-from pdfcorpus.index import CorpusIndex
-from pdfcorpus.retrieve import retrieve
+from trace_core.chunker import chunk_document
+from trace_core.classify import classify_document
+from trace_core.extract import extract_blocks
+from trace_core.index import CorpusIndex
+from trace_core.retrieve import retrieve
 
 
 def ingest(path, doc_id="grape_oct"):

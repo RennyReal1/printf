@@ -27,9 +27,9 @@ from pathlib import Path
 
 import anthropic
 
-from pdfcorpus.explain import explain_generic, explain_grounded
-from pdfcorpus.index import CorpusIndex
-from pdfcorpus.retrieve import retrieve
+from trace_core.explain import explain_generic, explain_grounded
+from trace_core.index import CorpusIndex
+from trace_core.retrieve import retrieve
 
 JUDGE_MODEL = "claude-opus-5"
 

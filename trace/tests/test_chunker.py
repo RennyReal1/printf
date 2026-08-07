@@ -1,8 +1,8 @@
 """Chunking invariant tests — the three properties that make this chunker
 work where fixed-window chunking fails."""
 
-from pdfcorpus.blocks import BlockType, RawBlock
-from pdfcorpus.chunker import build_units, chunk_document, chunk_units
+from trace_core.blocks import BlockType, RawBlock
+from trace_core.chunker import build_units, chunk_document, chunk_units
 
 
 def blk(text, btype=BlockType.BODY, page=0, y=300, **kw):

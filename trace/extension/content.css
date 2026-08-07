@@ -1,0 +1,122 @@
+/* Trace overlay UI. High z-index and scoped class names so it doesn't collide
+   with host-page styles. Kept deliberately neutral. */
+
+.trace-chip {
+  position: absolute;
+  z-index: 2147483646;
+  padding: 6px 10px;
+  font: 500 12px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #fff;
+  background: #1f6feb;
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+.trace-chip:hover {
+  background: #1a5fd0;
+}
+
+.trace-panel {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 2147483647;
+  width: 360px;
+  max-height: 80vh;
+  overflow-y: auto;
+  background: #fff;
+  color: #1a1a1a;
+  border: 1px solid #d0d7de;
+  border-radius: 10px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+  font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.trace-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-bottom: 1px solid #eaeef2;
+}
+.trace-panel-title {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.trace-panel-close {
+  border: none;
+  background: none;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  color: #57606a;
+}
+
+.trace-panel-body {
+  padding: 14px;
+}
+.trace-quote {
+  padding: 8px 10px;
+  margin-bottom: 12px;
+  background: #f6f8fa;
+  border-left: 3px solid #1f6feb;
+  border-radius: 4px;
+  font-style: italic;
+  color: #3a3a3a;
+}
+.trace-loading {
+  color: #57606a;
+}
+.trace-explanation {
+  margin-bottom: 12px;
+}
+.trace-sources-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #57606a;
+  margin-bottom: 4px;
+}
+.trace-sources {
+  margin: 0;
+  padding-left: 18px;
+}
+.trace-sources li {
+  font-size: 12px;
+  color: #24292f;
+  margin-bottom: 2px;
+}
+.trace-error {
+  color: #b42318;
+}
+.trace-error code {
+  display: inline-block;
+  padding: 2px 6px;
+  background: #f6f8fa;
+  border-radius: 4px;
+  color: #1a1a1a;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  .trace-panel {
+    background: #161b22;
+    color: #e6edf3;
+    border-color: #30363d;
+  }
+  .trace-panel-head {
+    border-bottom-color: #21262d;
+  }
+  .trace-quote {
+    background: #0d1117;
+    color: #c9d1d9;
+  }
+  .trace-sources li {
+    color: #c9d1d9;
+  }
+  .trace-error code,
+  .trace-quote {
+    color: #e6edf3;
+  }
+}

@@ -4,3 +4,8 @@ corpus.json
 eval/results.json
 *.pdf
 .pytest_cache/
+
+# build artifacts
+*.egg-info/
+build/
+dist/

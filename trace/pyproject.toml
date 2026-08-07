@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "trace-oct"
+version = "0.1.0"
+description = "Layout-aware PDF corpus retrieval with cross-paper attribution, plus a browser extension for highlight explanation."
+requires-python = ">=3.10"
+dependencies = ["pymupdf>=1.24", "anthropic>=0.69"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+trace = "trace_core.cli:main"
+
+[tool.setuptools]
+packages = ["trace_core"]

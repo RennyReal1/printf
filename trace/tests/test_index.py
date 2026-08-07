@@ -1,8 +1,8 @@
 """BM25 index + cross-paper retrieval and attribution tests."""
 
-from pdfcorpus.blocks import Chunk
-from pdfcorpus.index import CorpusIndex, tokenize
-from pdfcorpus.retrieve import build_context, resolve_citations, retrieve
+from trace_core.blocks import Chunk
+from trace_core.index import CorpusIndex, tokenize
+from trace_core.retrieve import build_context, resolve_citations, retrieve
 
 
 def make_chunk(doc, n, text, section="", pages=(1,), captions=()):

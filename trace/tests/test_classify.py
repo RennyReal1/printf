@@ -1,8 +1,8 @@
 """Classification tests — the signals that separate equations/captions/headings
 from body prose, including the false-positive cases that break naive rules."""
 
-from pdfcorpus.blocks import BlockType, RawBlock
-from pdfcorpus.classify import classify_document, math_density
+from trace_core.blocks import BlockType, RawBlock
+from trace_core.classify import classify_document, math_density
 
 
 def body(text, **kw):

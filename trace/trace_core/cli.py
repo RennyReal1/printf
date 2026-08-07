@@ -1,8 +1,11 @@
-"""CLI: ingest PDFs into an index, query it, and explain highlights.
+"""Trace CLI: ingest PDFs, query the corpus, explain highlights, serve the backend.
 
-    python -m pdfcorpus ingest papers/*.pdf --index corpus.json
-    python -m pdfcorpus query "attenuation coefficient grape" --index corpus.json
-    python -m pdfcorpus explain "..." --index corpus.json [--generic]
+    trace ingest papers/*.pdf --index corpus.json
+    trace query "attenuation coefficient grape" --index corpus.json
+    trace explain "..." --index corpus.json [--generic]
+    trace serve --index corpus.json          # local backend for the extension
+
+(Equivalently `python -m trace_core <cmd>` if not pip-installed.)
 """
 
 from __future__ import annotations
@@ -57,7 +60,7 @@ def explain(highlight: str, index_path: str, k: int, generic: bool, paper: str) 
 
 
 def main(argv: list[str] | None = None) -> int:
-    ap = argparse.ArgumentParser(prog="pdfcorpus")
+    ap = argparse.ArgumentParser(prog="trace")
     sub = ap.add_subparsers(dest="cmd", required=True)
 
     p_ing = sub.add_parser("ingest", help="chunk PDFs and build the corpus index")
@@ -77,6 +80,10 @@ def main(argv: list[str] | None = None) -> int:
     p_e.add_argument("--generic", action="store_true", help="skip retrieval (baseline)")
     p_e.add_argument("--paper", default="", help="paper the highlight came from")
 
+    p_s = sub.add_parser("serve", help="run the local backend for the Trace extension")
+    p_s.add_argument("--index", default="corpus.json")
+    p_s.add_argument("--port", type=int, default=8765)
+
     args = ap.parse_args(argv)
     if args.cmd == "ingest":
         ingest(args.pdfs, args.index, args.max_tokens)
@@ -84,6 +91,10 @@ def main(argv: list[str] | None = None) -> int:
         query(args.query, args.index, args.k)
     elif args.cmd == "explain":
         explain(args.highlight, args.index, args.k, args.generic, args.paper)
+    elif args.cmd == "serve":
+        from .server import serve as run_serve
+
+        run_serve(args.index, args.port)
     return 0
 
 
