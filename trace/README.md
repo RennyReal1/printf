@@ -51,6 +51,40 @@ Trace enforces three invariants instead:
 Oversized *prose* units split at sentence boundaries; a unit containing an
 equation is never split at all — the invariant outranks the token budget.
 
+## Try it in one minute
+
+```bash
+pip install -e .
+trace demo                # builds a 3-paper synthetic OCT corpus and serves it
+```
+
+Then load the extension (step 3 below) and highlight one of the passages
+`trace demo` prints. No real PDFs needed; explanations still need an API key,
+but retrieval and the highlight UX work without one.
+
+## What retrieval looks like
+
+`trace query` over the demo corpus — note `[S2]`: the display equation stays
+fused with the `where mu is…` line that defines its symbols, and hits span
+three different papers:
+
+```
+$ trace query "how is the attenuation coefficient extracted from depth" --index corpus.json -k 3
+
+[S1] [skin_optics_2019 §3. Results, p.1]  (score 3.41)
+  ... The attenuation coefficient is extracted from the slope of the
+  log-intensity depth profile, the same method used for berries ...
+
+[S2] [grape_oct_2021 §2. Theory, p.1]  (score 2.71)
+  Assuming single scattering, the detected OCT signal follows a Beer-Lambert
+  decay and the attenuation coefficient is obtained from I(z) = I0 exp(-2 mu z)
+  (3) where mu is the total attenuation coefficient and z is the depth ...
+
+[S3] [oct_review §1. Principles, p.1]  (score 1.22)
+  ... Penetration depth in turbid media is limited by total attenuation, which
+  is why longer wavelengths such as 1300 nm are chosen ...
+```
+
 ## Setup
 
 ```bash
@@ -126,10 +160,10 @@ python -m eval.run_eval --index corpus.json               # full judged run
 python -m pytest
 ```
 
-36 tests, no network or API key required: classification signals and their
+41 tests, no network or API key required: classification signals and their
 false positives, the three chunking invariants, BM25 retrieval + attribution +
-persistence, an end-to-end pass over a synthetic PDF built with PyMuPDF, and the
-backend server (health, CORS, request validation).
+persistence, an end-to-end pass over a synthetic PDF built with PyMuPDF, the
+backend server (health, CORS, request validation), and the demo corpus.
 
 ## Layout
 

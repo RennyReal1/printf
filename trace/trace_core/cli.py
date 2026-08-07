@@ -4,6 +4,7 @@
     trace query "attenuation coefficient grape" --index corpus.json
     trace explain "..." --index corpus.json [--generic]
     trace serve --index corpus.json          # local backend for the extension
+    trace demo                               # synthetic corpus + backend, one command
 
 (Equivalently `python -m trace_core <cmd>` if not pip-installed.)
 """
@@ -84,6 +85,10 @@ def main(argv: list[str] | None = None) -> int:
     p_s.add_argument("--index", default="corpus.json")
     p_s.add_argument("--port", type=int, default=8765)
 
+    p_d = sub.add_parser("demo", help="build a tiny synthetic corpus and serve it")
+    p_d.add_argument("--dir", default="trace-demo")
+    p_d.add_argument("--port", type=int, default=8765)
+
     args = ap.parse_args(argv)
     if args.cmd == "ingest":
         ingest(args.pdfs, args.index, args.max_tokens)
@@ -95,6 +100,10 @@ def main(argv: list[str] | None = None) -> int:
         from .server import serve as run_serve
 
         run_serve(args.index, args.port)
+    elif args.cmd == "demo":
+        from .demo import run_demo
+
+        run_demo(args.dir, args.port)
     return 0
 
 
